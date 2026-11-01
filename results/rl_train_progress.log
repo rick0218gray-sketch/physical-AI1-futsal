@@ -1,0 +1,56 @@
+rl_train_part1.log:BC loaded; missing: ['distribution.std_param'] unexpected: []
+rl_train_part1.log:[futsal] iter 10 wall 69s GF/min 0.078 GA/min 0.137 vsT 4-10 vsSelf 4-4
+rl_train_part1.log:[futsal] iter 20 wall 133s GF/min 0.117 GA/min 0.107 vsT 9-7 vsSelf 3-4
+rl_train_part1.log:[futsal] iter 30 wall 197s GF/min 0.098 GA/min 0.127 vsT 4-7 vsSelf 6-6
+rl_train_part1.log:[futsal] iter 40 wall 265s GF/min 0.146 GA/min 0.205 vsT 8-13 vsSelf 7-8
+rl_train_part1.log:[futsal] iter 50 wall 333s GF/min 0.430 GA/min 0.176 vsT 25-11 vsSelf 19-7
+rl_train_part1.log:[futsal] iter 60 wall 400s GF/min 0.273 GA/min 0.215 vsT 14-12 vsSelf 14-10
+rl_train_part1.log:[futsal] iter 70 wall 468s GF/min 0.264 GA/min 0.244 vsT 14-8 vsSelf 13-17
+rl_train_part1.log:[futsal] iter 80 wall 534s GF/min 0.283 GA/min 0.186 vsT 16-5 vsSelf 13-14
+rl_train_part1.log:[futsal] iter 90 wall 601s GF/min 0.322 GA/min 0.195 vsT 17-6 vsSelf 16-14
+rl_train_part1.log:[futsal] iter 100 wall 670s GF/min 0.518 GA/min 0.205 vsT 35-12 vsSelf 18-9
+rl_train_part1.log:[futsal] iter 110 wall 738s GF/min 0.459 GA/min 0.127 vsT 19-6 vsSelf 28-7
+rl_train_part1.log:[futsal] iter 120 wall 805s GF/min 0.488 GA/min 0.195 vsT 38-7 vsSelf 12-13
+rl_train_part1.log:[futsal] iter 130 wall 873s GF/min 0.488 GA/min 0.225 vsT 38-9 vsSelf 12-14
+rl_train_part1.log:[futsal] iter 140 wall 940s GF/min 0.439 GA/min 0.166 vsT 28-5 vsSelf 17-12
+rl_train_part1.log:[futsal] iter 150 wall 1008s GF/min 0.635 GA/min 0.293 vsT 46-2 vsSelf 19-28
+rl_train_part1.log:[futsal] iter 160 wall 1078s GF/min 0.518 GA/min 0.371 vsT 36-4 vsSelf 17-34
+rl_train_part1.log:[futsal] iter 170 wall 1146s GF/min 0.498 GA/min 0.205 vsT 32-6 vsSelf 19-15
+rl_train_part1.log:[futsal] iter 180 wall 1215s GF/min 0.439 GA/min 0.264 vsT 28-10 vsSelf 17-17
+rl_train_part1.log:[futsal] iter 190 wall 1285s GF/min 0.293 GA/min 0.215 vsT 21-9 vsSelf 9-13
+rl_train_part1.log:[futsal] iter 200 wall 1355s GF/min 0.469 GA/min 0.273 vsT 34-10 vsSelf 14-18
+rl_train_part1.log:[futsal] iter 210 wall 1427s GF/min 0.371 GA/min 0.225 vsT 28-6 vsSelf 10-17
+rl_train.log:BC loaded; missing: ['distribution.std_param'] unexpected: []
+rl_train.log:resumed from logs/futsal-rl/model_189.pt at iteration 190
+rl_train.log:[futsal] iter 200 wall 38s GF/min 0.381 GA/min 0.068 vsT 25-4 vsSelf 14-3
+rl_train.log:[futsal] iter 210 wall 75s GF/min 0.410 GA/min 0.215 vsT 31-6 vsSelf 11-16
+rl_train.log:[futsal] iter 220 wall 115s GF/min 0.361 GA/min 0.137 vsT 24-6 vsSelf 13-8
+rl_train.log:[futsal] iter 230 wall 153s GF/min 0.449 GA/min 0.186 vsT 30-5 vsSelf 16-14
+rl_train.log:[futsal] iter 240 wall 192s GF/min 0.410 GA/min 0.244 vsT 31-12 vsSelf 11-13
+rl_train.log:[futsal] iter 250 wall 229s GF/min 0.527 GA/min 0.195 vsT 30-4 vsSelf 24-16
+rl_train.log:[futsal] iter 260 wall 268s GF/min 0.322 GA/min 0.156 vsT 23-4 vsSelf 10-12
+rl_train.log:[futsal] iter 270 wall 307s GF/min 0.371 GA/min 0.195 vsT 28-4 vsSelf 10-16
+rl_train.log:[futsal] iter 280 wall 346s GF/min 0.322 GA/min 0.215 vsT 20-9 vsSelf 13-13
+rl_train.log:[futsal] iter 290 wall 386s GF/min 0.391 GA/min 0.342 vsT 25-12 vsSelf 15-23
+rl_train.log:[futsal] iter 300 wall 426s GF/min 0.381 GA/min 0.176 vsT 30-3 vsSelf 9-15
+rl_train.log:[futsal] iter 310 wall 466s GF/min 0.439 GA/min 0.127 vsT 32-3 vsSelf 13-10
+rl_train.log:[futsal] iter 320 wall 505s GF/min 0.420 GA/min 0.215 vsT 30-5 vsSelf 13-17
+rl_train.log:[futsal] iter 330 wall 544s GF/min 0.449 GA/min 0.156 vsT 34-4 vsSelf 12-12
+rl_train.log:[futsal] iter 340 wall 590s GF/min 0.518 GA/min 0.205 vsT 36-5 vsSelf 17-16
+rl_train.log:[futsal] iter 350 wall 629s GF/min 0.518 GA/min 0.186 vsT 37-4 vsSelf 16-15
+rl_train.log:[futsal] iter 360 wall 670s GF/min 0.459 GA/min 0.166 vsT 33-6 vsSelf 14-11
+rl_train.log:[futsal] iter 370 wall 708s GF/min 0.449 GA/min 0.205 vsT 34-4 vsSelf 12-17
+rl_train.log:[futsal] iter 380 wall 747s GF/min 0.352 GA/min 0.156 vsT 27-3 vsSelf 9-13
+rl_train.log:[futsal] iter 390 wall 793s GF/min 0.596 GA/min 0.186 vsT 37-4 vsSelf 24-15
+rl_train.log:[futsal] iter 400 wall 831s GF/min 0.400 GA/min 0.146 vsT 29-3 vsSelf 12-12
+rl_train.log:[futsal] iter 410 wall 870s GF/min 0.391 GA/min 0.068 vsT 31-2 vsSelf 9-5
+rl_train.log:[futsal] iter 420 wall 909s GF/min 0.391 GA/min 0.176 vsT 32-4 vsSelf 8-14
+rl_train.log:[futsal] iter 430 wall 954s GF/min 0.381 GA/min 0.205 vsT 24-5 vsSelf 15-16
+rl_train.log:[futsal] iter 440 wall 1000s GF/min 0.557 GA/min 0.293 vsT 36-9 vsSelf 21-21
+rl_train.log:[futsal] iter 450 wall 1043s GF/min 0.400 GA/min 0.166 vsT 31-2 vsSelf 10-15
+rl_train.log:[futsal] iter 460 wall 1085s GF/min 0.459 GA/min 0.234 vsT 26-4 vsSelf 21-20
+rl_train.log:[futsal] iter 470 wall 1130s GF/min 0.508 GA/min 0.205 vsT 34-2 vsSelf 18-19
+rl_train.log:[futsal] iter 480 wall 1172s GF/min 0.449 GA/min 0.225 vsT 28-8 vsSelf 18-15
+rl_train.log:[futsal] iter 490 wall 1212s GF/min 0.615 GA/min 0.166 vsT 48-4 vsSelf 15-13
+rl_train.log:[futsal] iter 500 wall 1258s GF/min 0.498 GA/min 0.146 vsT 29-2 vsSelf 22-13
+rl_train.log:EXIT 0 ELAPSED 1389s

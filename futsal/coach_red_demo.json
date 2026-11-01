@@ -1,0 +1,4 @@
+[
+ {"t": 0, "instruction": "守りを固めて、カウンターを狙え", "attack": 0.1, "keeper_depth": 0.4, "press": 0.3},
+ {"t": 30, "instruction": "負けているから前に出て攻め続けろ", "attack": 1.0, "keeper_depth": 0.5, "press": 0.5}
+]

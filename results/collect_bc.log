@@ -1,0 +1,45 @@
+[38;5;226m[Genesis] [03:15:24] [WARNING] Neutral robot position (qpos0) exceeds joint limits.[0m
+step 0/2400  wall 2s  goals [0.0, 0.0]  falls [0.0, 0.0, 0.0, 0.0]
+step 200/2400  wall 40s  goals [17.0, 15.0]  falls [17.0, 57.0, 10.0, 56.0]
+step 400/2400  wall 80s  goals [45.0, 37.0]  falls [36.0, 112.0, 28.0, 118.0]
+step 600/2400  wall 121s  goals [62.0, 67.0]  falls [47.0, 180.0, 49.0, 177.0]
+step 800/2400  wall 158s  goals [81.0, 75.0]  falls [53.0, 236.0, 66.0, 244.0]
+step 1000/2400  wall 196s  goals [101.0, 93.0]  falls [64.0, 293.0, 69.0, 292.0]
+step 1200/2400  wall 235s  goals [124.0, 118.0]  falls [73.0, 352.0, 80.0, 346.0]
+step 1400/2400  wall 273s  goals [135.0, 133.0]  falls [78.0, 414.0, 95.0, 405.0]
+step 1600/2400  wall 311s  goals [166.0, 167.0]  falls [94.0, 472.0, 110.0, 455.0]
+step 1800/2400  wall 348s  goals [193.0, 188.0]  falls [104.0, 527.0, 127.0, 500.0]
+step 2000/2400  wall 388s  goals [204.0, 203.0]  falls [112.0, 583.0, 138.0, 563.0]
+step 2200/2400  wall 430s  goals [227.0, 230.0]  falls [127.0, 630.0, 149.0, 638.0]
+{"samples": 2457600, "envs": 256, "sim_seconds": 61440.0, "wall_s": 473.0, "matches_finished": 1024, "goals_A": 244.0, "goals_B": 262.0, "goals_per_min": 0.494140625, "falls_per_robot_min": [0.1396484375, 0.6787109375, 0.1640625, 0.6630859375]}
+bc epoch 0 val_mse 0.1677
+bc epoch 1 val_mse 0.1483
+bc epoch 2 val_mse 0.1339
+bc epoch 3 val_mse 0.1217
+bc epoch 4 val_mse 0.1109
+bc epoch 5 val_mse 0.1033
+bc epoch 6 val_mse 0.0965
+bc epoch 7 val_mse 0.0938
+bc epoch 8 val_mse 0.0884
+bc epoch 9 val_mse 0.0864
+bc epoch 10 val_mse 0.0840
+bc epoch 11 val_mse 0.0815
+bc epoch 12 val_mse 0.0808
+bc epoch 13 val_mse 0.0781
+bc epoch 14 val_mse 0.0759
+bc epoch 15 val_mse 0.0744
+bc epoch 16 val_mse 0.0733
+bc epoch 17 val_mse 0.0730
+bc epoch 18 val_mse 0.0710
+bc epoch 19 val_mse 0.0707
+bc epoch 20 val_mse 0.0695
+bc epoch 21 val_mse 0.0688
+bc epoch 22 val_mse 0.0677
+bc epoch 23 val_mse 0.0672
+bc epoch 24 val_mse 0.0666
+bc epoch 25 val_mse 0.0654
+bc epoch 26 val_mse 0.0655
+bc epoch 27 val_mse 0.0641
+bc epoch 28 val_mse 0.0639
+bc epoch 29 val_mse 0.0638
+EXIT 0 ELAPSED 861s

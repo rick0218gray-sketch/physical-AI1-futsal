@@ -1,0 +1,4 @@
+[
+ {"t": 0, "instruction": "全員で攻めろ。とにかく点を取りに行け", "attack": 1.0, "keeper_depth": 0.5, "press": 0.5},
+ {"t": 30, "instruction": "相手に激しくプレッシャーをかけろ", "attack": 0.5, "keeper_depth": 0.5, "press": 1.0}
+]

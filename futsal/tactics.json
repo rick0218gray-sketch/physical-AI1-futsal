@@ -1,0 +1,218 @@
+[
+ {
+  "attack": 1.0,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "全員が積極的に攻撃に参加し、点を取るためのプレーを行う。キーパーは中盤まで出るが、フィールドプレーヤーは全速力でボールを追う。",
+  "instruction": "全員で攻めろ。とにかく点を取りに行け",
+  "latency_s": 19.42,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.1,
+  "keeper_depth": 0.4,
+  "press": 0.3,
+  "summary": "フィールドプレーヤーは積極的に攻めず、主にカウンター攻撃を狙う。キーパーはゴールラインに近い位置に留まり、プレッシャーは緩めに。",
+  "instruction": "守りを固めて、カウンターを狙え",
+  "latency_s": 6.94,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.5,
+  "keeper_depth": 1.0,
+  "press": 0.5,
+  "summary": "キーパーはゴールから約0.9m前に出てシュートコースを狭め、攻撃と守備のバランスを保つように",
+  "instruction": "キーパーは前に出てシュートコースを狭めろ",
+  "latency_s": 5.66,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.5,
+  "keeper_depth": 0.0,
+  "press": 0.5,
+  "summary": "キーパーはゴールラインに固定。攻撃性とプレッシャーは中程度。",
+  "instruction": "キーパーはゴールラインから動くな",
+  "latency_s": 4.7,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.5,
+  "keeper_depth": 0.5,
+  "press": 1.0,
+  "summary": "フィールドプレーヤーは相手に激しいプレッシャーをかけ、キーパーは中盤まで出る。",
+  "instruction": "相手に激しくプレッシャーをかけろ",
+  "latency_s": 5.25,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.2,
+  "keeper_depth": 0.5,
+  "press": 0.2,
+  "summary": "攻撃は控えめで、ボール運びはゆっくりと行う。",
+  "instruction": "落ち着いて、ゆっくりボールを運べ",
+  "latency_s": 4.36,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.0,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "リードしているので、フィールドプレーヤーは攻撃を控え、キーパーは普通の位置で、適度なプレッシャーをかけて時間を稼ぐ。",
+  "instruction": "リードしているので時間を使って守り切れ",
+  "latency_s": 6.2,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 1.0,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "攻撃を強化し、キーパーは中盤に出て支援。",
+  "instruction": "負けているから前に出て攻め続けろ",
+  "latency_s": 4.36,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.5,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "攻撃と守備のバランスを重視した戦術です。",
+  "instruction": "バランスよく戦え",
+  "latency_s": 4.18,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.2,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "前半は慎重に gameplay、攻撃は控えめに。",
+  "instruction": "前半は様子見で、無理に攻めるな",
+  "latency_s": 4.23,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 1.0,
+  "keeper_depth": 0.5,
+  "press": 1.0,
+  "summary": "奪球後は全速力で相手ゴールを目指す。",
+  "instruction": "ボールを奪ったら全速で相手ゴールへ",
+  "latency_s": 4.08,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.5,
+  "keeper_depth": 1.0,
+  "press": 0.5,
+  "summary": "キーパーは積極的に飛び出し、フィールドプレーヤーは中庸な攻撃性でプレーします。",
+  "instruction": "キーパーも積極的に飛び出してボールを処理しろ",
+  "latency_s": 5.14,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.0,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "フィールドプレーヤーは積極的に攻めず、自陣で守備態勢を保ち、相手のミスを待つよう指示。キーパーはゴールラインに留まる。",
+  "instruction": "自陣に引いて、相手のミスを待て",
+  "latency_s": 6.53,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.2,
+  "keeper_depth": 0.8,
+  "press": 0.9,
+  "summary": "フィールドプレーヤーはボールが相手陣にあるときは少し攻めながらも守備に配慮し、キーパーはゴールから少し前に出る。プレッシャーは高めで、速さも少し上げる。",
+  "instruction": "ハイプレスで相手陣内でボールを奪え",
+  "latency_s": 7.03,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.8,
+  "keeper_depth": 0.3,
+  "press": 0.5,
+  "summary": "キーパーは少し前に出るが、プレーヤーは積極的に攻めます。",
+  "instruction": "キーパーは少しだけ前に出て、プレーヤーは攻撃的に",
+  "latency_s": 4.64,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.5,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "攻撃は中庸に、キーパーは普通の位置で守備に専念。",
+  "instruction": "体力を温存して、ほどほどに攻めろ",
+  "latency_s": 4.76,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.0,
+  "keeper_depth": 1.0,
+  "press": 0.5,
+  "summary": "攻撃は控えめにし、失点防止に集中。キーパーは前進しやすく、フィールドプレーヤーは普通の速さでプレー。",
+  "instruction": "とにかく失点しないことを最優先にしろ",
+  "latency_s": 6.05,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 1.0,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "フィールドプレーヤーは積極的に攻め、キーパーはゴールラインに留まり、中庸なプレッシャーを維持します。",
+  "instruction": "一点取りに行くぞ、リスクを取れ",
+  "latency_s": 5.58,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 1.0,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "フィールドプレーヤーは積極的に攻め、キーパーは中程度の位置で守備。",
+  "instruction": "相手のキーパーが前に出ているから、どんどん攻めろ",
+  "latency_s": 4.89,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.3,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "攻撃は慎重に、チャンスがあったらしかりに攻める。キーパーは中央に留まり、フィールドプレーヤーは普通の速さでプレー。",
+  "instruction": "慎重に守りながら、チャンスがあれば攻めろ",
+  "latency_s": 6.07,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.5,
+  "keeper_depth": 0.5,
+  "press": 1.0,
+  "summary": "フィールドプレーヤーは全速力でボールを追うが、攻撃や守備の位置は中庸に。",
+  "instruction": "全速力でボールを追いかけろ",
+  "latency_s": 5.3,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.0,
+  "keeper_depth": 1.0,
+  "press": 0.5,
+  "summary": "フィールドプレーヤーは攻撃を控え、キーパーはゴールから少し前に出る。",
+  "instruction": "ゴール前を固めて、キーパーは下がれ",
+  "latency_s": 4.94,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 0.5,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "フィールドプレーヤーはボールの位置に応じて攻撃と守備のバランスを保ち、キーパーはゴールラインから少し前に出て対応します。",
+  "instruction": "攻撃も守備も中くらいで",
+  "latency_s": 6.41,
+  "model": "qwen2.5:7b-instruct"
+ },
+ {
+  "attack": 1.0,
+  "keeper_depth": 0.5,
+  "press": 0.5,
+  "summary": "最後の1分は全員攻撃モード。フィールドプレーヤーはボールを追って積極的に攻め、キーパーは通常の位置でサポート。",
+  "instruction": "最後の1分だ、全員攻撃",
+  "latency_s": 6.05,
+  "model": "qwen2.5:7b-instruct"
+ }
+]

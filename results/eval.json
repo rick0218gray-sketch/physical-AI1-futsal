@@ -1,0 +1,70 @@
+{
+ "match_s": 60.0,
+ "n_per_side": 128,
+ "results": [
+  {
+   "a": "rl",
+   "b": "teacher",
+   "matches": 256,
+   "a_wins": 110,
+   "draws": 132,
+   "b_wins": 14,
+   "a_goals": 140,
+   "b_goals": 21,
+   "a_falls": 101,
+   "b_falls": 250,
+   "a_points_rate": 0.688,
+   "a_goals_per_match": 0.547,
+   "b_goals_per_match": 0.082,
+   "wall_s": 133.3
+  },
+  {
+   "a": "bc",
+   "b": "teacher",
+   "matches": 256,
+   "a_wins": 20,
+   "draws": 198,
+   "b_wins": 38,
+   "a_goals": 24,
+   "b_goals": 42,
+   "a_falls": 93,
+   "b_falls": 147,
+   "a_points_rate": 0.465,
+   "a_goals_per_match": 0.094,
+   "b_goals_per_match": 0.164,
+   "wall_s": 145.5
+  },
+  {
+   "a": "rl",
+   "b": "bc",
+   "matches": 256,
+   "a_wins": 89,
+   "draws": 162,
+   "b_wins": 5,
+   "a_goals": 103,
+   "b_goals": 7,
+   "a_falls": 84,
+   "b_falls": 157,
+   "a_points_rate": 0.664,
+   "a_goals_per_match": 0.402,
+   "b_goals_per_match": 0.027,
+   "wall_s": 145.6
+  },
+  {
+   "a": "teacher",
+   "b": "teacher",
+   "matches": 256,
+   "a_wins": 46,
+   "draws": 163,
+   "b_wins": 47,
+   "a_goals": 61,
+   "b_goals": 58,
+   "a_falls": 251,
+   "b_falls": 231,
+   "a_points_rate": 0.498,
+   "a_goals_per_match": 0.238,
+   "b_goals_per_match": 0.227,
+   "wall_s": 140.2
+  }
+ ]
+}

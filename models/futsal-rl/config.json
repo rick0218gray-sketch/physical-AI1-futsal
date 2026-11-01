@@ -1,0 +1,65 @@
+{
+ "ckpt": "logs/go2-soccer/model_1398.pt",
+ "bc": "logs/bc/bc_policy.pt",
+ "exp": "futsal-rl",
+ "n": 192,
+ "iters": 500,
+ "warmup": 20,
+ "snapshot_every": 50,
+ "match_s": 40,
+ "init_std": 0.25,
+ "resume": "logs/futsal-rl/model_189.pt",
+ "start_iter": 190,
+ "opponent": "logs/futsal-rl/policy_200.pt",
+ "train_cfg": {
+  "algorithm": {
+   "class_name": "PPO",
+   "clip_param": 0.2,
+   "desired_kl": 0.01,
+   "entropy_coef": 0.002,
+   "gamma": 0.99,
+   "lam": 0.95,
+   "learning_rate": 0.0003,
+   "max_grad_norm": 1.0,
+   "num_learning_epochs": 5,
+   "num_mini_batches": 4,
+   "schedule": "adaptive",
+   "use_clipped_value_loss": true,
+   "value_loss_coef": 1.0
+  },
+  "actor": {
+   "class_name": "MLPModel",
+   "hidden_dims": [
+    256,
+    128
+   ],
+   "activation": "elu",
+   "distribution_cfg": {
+    "class_name": "GaussianDistribution",
+    "init_std": 0.25,
+    "std_type": "scalar"
+   }
+  },
+  "critic": {
+   "class_name": "MLPModel",
+   "hidden_dims": [
+    256,
+    256,
+    128
+   ],
+   "activation": "elu"
+  },
+  "obs_groups": {
+   "actor": [
+    "policy"
+   ],
+   "critic": [
+    "policy"
+   ]
+  },
+  "num_steps_per_env": 32,
+  "save_interval": 50,
+  "run_name": "futsal-rl",
+  "logger": "tensorboard"
+ }
+}

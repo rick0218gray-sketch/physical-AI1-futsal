@@ -1,0 +1,83 @@
+w_action_rate: -0.1000
+    Mean episode rew_similar_to_default: -0.1009
+--------------------------------------------------------------------------------
+                         Iteration time: 0.78s
+                           Time elapsed: 0:09:10
+                                    ETA: 0:00:02
+
+################################################################################
+[1m                          Learning iteration 1396/1399                          [0m 
+
+                               Run name: go2-soccer
+                            Total steps: 14696448 
+                       Steps per second: 32257 
+                        Collection time: 0.450s 
+                          Learning time: 0.312s 
+                        Mean value loss: 0.0026
+                    Mean surrogate loss: -0.0108
+                      Mean entropy loss: 15.9121
+                            Mean reward: 19.05
+                    Mean episode length: 979.30
+                        Mean action std: 0.91
+      Mean episode rew_tracking_lin_vel: 0.4625
+      Mean episode rew_tracking_ang_vel: 0.2182
+             Mean episode rew_lin_vel_z: -0.0123
+           Mean episode rew_base_height: -0.0048
+           Mean episode rew_action_rate: -0.0814
+    Mean episode rew_similar_to_default: -0.0847
+--------------------------------------------------------------------------------
+                         Iteration time: 0.76s
+                           Time elapsed: 0:09:11
+                                    ETA: 0:00:01
+
+################################################################################
+[1m                          Learning iteration 1397/1399                          [0m 
+
+                               Run name: go2-soccer
+                            Total steps: 14721024 
+                       Steps per second: 31994 
+                        Collection time: 0.430s 
+                          Learning time: 0.338s 
+                        Mean value loss: 0.0022
+                    Mean surrogate loss: -0.0114
+                      Mean entropy loss: 15.9119
+                            Mean reward: 19.21
+                    Mean episode length: 988.79
+                        Mean action std: 0.91
+      Mean episode rew_tracking_lin_vel: 0.6287
+      Mean episode rew_tracking_ang_vel: 0.2922
+             Mean episode rew_lin_vel_z: -0.0152
+           Mean episode rew_base_height: -0.0065
+           Mean episode rew_action_rate: -0.1048
+    Mean episode rew_similar_to_default: -0.1054
+--------------------------------------------------------------------------------
+                         Iteration time: 0.77s
+                           Time elapsed: 0:09:12
+                                    ETA: 0:00:00
+
+################################################################################
+[1m                          Learning iteration 1398/1399                          [0m 
+
+                               Run name: go2-soccer
+                            Total steps: 14745600 
+                       Steps per second: 30042 
+                        Collection time: 0.488s 
+                          Learning time: 0.330s 
+                        Mean value loss: 0.0036
+                    Mean surrogate loss: -0.0102
+                      Mean entropy loss: 15.9072
+                            Mean reward: 19.30
+                    Mean episode length: 994.79
+                        Mean action std: 0.91
+      Mean episode rew_tracking_lin_vel: 0.4781
+      Mean episode rew_tracking_ang_vel: 0.2232
+             Mean episode rew_lin_vel_z: -0.0118
+           Mean episode rew_base_height: -0.0050
+           Mean episode rew_action_rate: -0.0802
+    Mean episode rew_similar_to_default: -0.0807
+--------------------------------------------------------------------------------
+                         Iteration time: 0.82s
+                           Time elapsed: 0:09:13
+                                    ETA: 0:00:00
+
+EXIT 0 ELAPSED 714s
