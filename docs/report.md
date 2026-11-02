@@ -124,6 +124,7 @@ AIは3か所で使っている。
 
 ## 6. コードとクレジット
 
+- リポジトリ：https://github.com/rick0218gray-sketch/physical-AI1-futsal
 - コード、学習済みモデル（下位1個、模倣学習、強化学習）、評価結果、動画をリポジトリに収録した。
 - `locomotion/go2_env.py` と `go2_train.py` は、Genesis v1.4.5 の examples/locomotion（無改変）である。
 - フットサルの環境・お手本・監督・学習・評価・動画化のコードは本課題で作成した。実装にはClaudeの支援を受けた。
