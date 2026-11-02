@@ -11,7 +11,7 @@ Genesis上で、Unitree Go2 4体（各チーム キーパー1体＋フィール�
 | 戦術（上位方策） | 自分・味方・相手2体・ボールの位置と速度 → 速度指令（vx, vy, wz）を0.1秒ごと | ①ルールのお手本 → ②模倣学習 → ③選手だけの自己対戦で強化学習（PPO） |
 | 足まわり（下位方策） | 速度指令 → 12関節の目標角を50Hz | 強化学習（PPO）。速度追従の方策を、横移動の拡大と外乱付きで追加学習 |
 
-提出動画：[videos/futsal_submission.mp4](videos/futsal_submission.mp4)（等速）
+提出動画：https://youtu.be/w7fTLleIA-0（YouTube）／ [videos/futsal_submission.mp4](videos/futsal_submission.mp4)（等速）
 
 ## 結果
 
