@@ -7,7 +7,8 @@ Differences from go2_cmd_train.py:
   * roll/pitch termination relaxed from 10 to 20 deg (players get bumped)
   * starts from an existing checkpoint (default: go2-cmd model_799)
 
-usage: python go2_soccer_loco_train.py -e go2-soccer --init ../c_genesis/locomotion/logs/go2-cmd/model_799.pt
+usage: python go2_soccer_loco_train.py -e go2-soccer   # --init defaults to ../models/go2-cmd/model_799.pt
+       (writes locomotion/logs/<exp>/; needs Genesis + rsl-rl-lib + a GPU)
 """
 import argparse
 import os

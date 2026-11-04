@@ -7,7 +7,8 @@ refreshed every `--snapshot-every` iterations. No coach and no rules act for the
 reward (shared by both learners, per 0.1 s step)
   +10 goal scored, -10 goal conceded, +2 * ball progress toward the opponent goal [m], -1 per own fall
 
-usage: python rl_train.py --ckpt logs/go2-soccer/model_1399.pt --bc logs/bc/bc_policy.pt -n 192 --iters 600
+usage (inside futsal/, needs Genesis + rsl-rl-lib + a GPU; the submitted run used --iters 500):
+  python rl_train.py --ckpt ../models/go2-soccer/model_1398.pt --bc ../models/bc/bc_policy.pt -n 192 --iters 500
 """
 import argparse
 import copy
