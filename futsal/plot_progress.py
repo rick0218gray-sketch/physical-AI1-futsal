@@ -11,7 +11,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib import font_manager  # noqa: E402
 
-for p in ("/mnt/c/Windows/Fonts/meiryo.ttc", "/mnt/c/Windows/Fonts/YuGothM.ttc"):
+# Japanese font: Windows fonts under WSL, else Noto CJK (Debian/Ubuntu: apt install fonts-noto-cjk)
+for p in ("/mnt/c/Windows/Fonts/meiryo.ttc", "/mnt/c/Windows/Fonts/YuGothM.ttc",
+          "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"):
     try:
         font_manager.fontManager.addfont(p)
         plt.rcParams["font.family"] = font_manager.FontProperties(fname=p).get_name()
