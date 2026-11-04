@@ -3,3 +3,4 @@
 .venv/
 logs/
 rec/
+.pytest_cache/
