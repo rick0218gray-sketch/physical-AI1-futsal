@@ -1,0 +1,27 @@
+# Lightweight checks only: no simulator (Genesis), no GPU, no torch.
+# Tests that need torch skip themselves; run them locally with `pip install torch pytest`.
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Byte-compile all Python files
+        run: python -m compileall -q futsal locomotion tests
+      - name: Summarise the stored results
+        run: python futsal/summarize_results.py
+      - name: Unit tests
+        run: python -m pytest -q -rs
