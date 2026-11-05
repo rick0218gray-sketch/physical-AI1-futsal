@@ -1,0 +1,2 @@
+# Lightweight checks only (CI). Optional: torch (CPU) enables tests/test_env_logic.py and tests/test_rl_reward.py.
+pytest

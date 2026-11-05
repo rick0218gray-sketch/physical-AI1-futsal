@@ -2,6 +2,8 @@
 
 Physical AI 応用1講座 最終課題（優秀賞向けの追加作品）。アカウント：**Rick0218**
 
+## 概要
+
 Genesis上で、Unitree Go2 4体（各チーム キーパー1体＋フィールドプレーヤー1体）がボールを奪い合う2対2のフットサルを作った。
 ロボットの判断は3層に分けている。
 
@@ -13,9 +15,12 @@ Genesis上で、Unitree Go2 4体（各チーム キーパー1体＋フィール�
 
 提出動画：https://youtu.be/w7fTLleIA-0（YouTube）／ [videos/futsal_submission.mp4](videos/futsal_submission.mp4)（等速）
 
+レポート：[docs/report.md](docs/report.md)（Markdown）／ [docs/report.pdf](docs/report.pdf)（PDF）
+
 ## 結果
 
 各組み合わせ256試合（1試合60秒、両チームのサイドを入れ替えて128試合ずつ）。
+数値の元データは [results/eval.json](results/eval.json)（`python futsal/summarize_results.py` で同じ表を出せる。表と元データの一致はテストで確認している）。
 
 | 対戦 | 勝ち | 引き分け | 負け | 得点 − 失点 | 転倒（自 / 相手） |
 |---|---|---|---|---|---|
@@ -59,9 +64,58 @@ Genesis上で、Unitree Go2 4体（各チーム キーパー1体＋フィール�
 - 強化学習で強くなった相手は「お手本」と「自分の過去」だけで、未知の戦術への強さは検証していない。また学習した方策は監督の作戦パラメータをほぼ無視している可能性があり、作戦による動きの変化は確認していない。
 - シミュレーションのみ。実機への転移は扱っていない。
 
-## 実行方法
+## リポジトリ構成
 
-WSL2 Ubuntu、RTX 4060 Laptop 8GB、Python 3.11、torch 2.11.0+cu128、genesis-world 1.4.5、rsl-rl-lib 5.5.2。
+```
+futsal/        フットサル環境・お手本・監督・模倣学習・強化学習・評価・動画化
+  futsal_env.py      2対2の環境（Genesis）。チーム座標系への変換、得点・転倒・リセットの処理
+  futsal_teacher.py  ルールベースのお手本（作戦パラメータで動きが変わる）
+  coach.py           監督：日本語の指示 → 作戦パラメータ（Ollama）。結果は tactics.json
+  collect_bc.py      お手本の試合を集めて模倣学習（MLP 23-256-128-3）
+  rl_train.py        選手だけの自己対戦PPO（rsl_rl）
+  eval_matches.py    対戦評価（勝ち・引き分け・負けの集計は match_stats.py）
+  summarize_results.py  保存済みの結果ファイルから結果表を出す（GPU不要）
+  record_match.py / render_replay.py / compose_video.py / futsal_video.py  試合の記録と動画化
+  plot_progress.py / keeper_pos.py / goals.py / frame.py / sheet.py  図・解析の小道具
+locomotion/    Go2の足まわり（速度追従）の学習。go2_env.py・go2_train.py は Genesis examples
+models/        学習済みモデル（go2-cmd、go2-soccer、bc、futsal-rl）と学習記録
+results/       評価結果 eval.json、学習曲線、学習ログ
+videos/        提出動画とその素材
+docs/          レポート（report.md、report.pdf、図）
+tests/         CPUだけで動くテスト（pytest）
+```
+
+## 動かすのに必要なもの
+
+| 作業 | GPU | Genesis | その他 |
+|---|---|---|---|
+| 足まわりの学習・お手本の試合・模倣学習・強化学習・評価・試合の記録と描画 | 要（CUDA） | 要 | torch、rsl-rl-lib、tensordict |
+| 監督（`coach.py`） | 不要 | 不要 | Ollama + qwen2.5:7b-instruct |
+| 動画の合成（`compose_video.py`）・コマ抜き出し | 不要 | 不要 | PyAV、Pillow、NumPy |
+| 学習曲線の図（`plot_progress.py`） | 不要 | 不要 | pandas、matplotlib |
+| 結果表の再表示（`summarize_results.py`）・テスト（`pytest`） | 不要 | 不要 | 標準ライブラリ + pytest（torchがあればテストが増える） |
+
+### どこでも動くもの（GPU・シミュレータ不要）
+
+リポジトリの一番上で実行する。
+
+```bash
+pip install -r requirements-dev.txt                 # pytest のみ
+python futsal/summarize_results.py                  # results/eval.json などから結果表を出し、数値の整合性を確認
+python -m pytest -q -rs                             # 集計・README の数値・（torch があれば）観測とお手本の対称性など
+python futsal/plot_progress.py models/futsal-rl/progress.csv /tmp/rl_progress.png   # 学習曲線（pandas, matplotlib）
+```
+
+- `summarize_results.py` と `pytest` は Python 3.11 / 3.13 で確認済み（GitHub Actions でも同じものを実行）。
+- `pip install torch`（CPU版でよい）を入れると、観測・お手本の左右対称性、学習済み方策の読み込み、強化学習の報酬のテストも動く。Genesis は入っていなければテスト内で差し替える。
+- `plot_progress.py` は `models/futsal-rl/progress.csv` から `results/rl_progress.png` と同じ曲線を描けることを確認済み（日本語フォントは WSL の Windows フォントか Noto CJK を使う）。
+
+### 学習・評価の再現（GPU + Genesis が必要）
+
+作者の環境：WSL2 Ubuntu、RTX 4060 Laptop 8GB、Python 3.11、torch 2.11.0+cu128、genesis-world 1.4.5、rsl-rl-lib 5.5.2。
+
+以下は作者の環境で実行したコマンドで、この整理の際には再実行していない（GPU・シミュレータがないため未検証）。
+`futsal/` の中で実行する（`tactics.json` を相対パスで読むため）。出力は `futsal/logs/`、評価結果は `futsal/results/eval.json` に書かれる（リポジトリ直下の `results/` は提出時の結果）。
 
 ```bash
 cd futsal
@@ -72,6 +126,10 @@ python rl_train.py --ckpt ../models/go2-soccer/model_1398.pt --bc ../models/bc/b
 python eval_matches.py --ckpt ../models/go2-soccer/model_1398.pt --n 128 \
   --pair "rl=../models/futsal-rl/policy_500.pt:teacher=teacher"
 ```
+
+- 表の4組を出すには `--pair` を4つ並べる：`rl=../models/futsal-rl/policy_500.pt:teacher=teacher`、`bc=../models/bc/bc_policy.pt:teacher=teacher`、`rl=../models/futsal-rl/policy_500.pt:bc=../models/bc/bc_policy.pt`、`teacher=teacher:teacher=teacher`。
+- 強化学習は本番では210反復目で止まり、`--resume logs/futsal-rl/model_189.pt --start-iter 190 --opponent logs/futsal-rl/policy_200.pt` で再開した（[models/futsal-rl/config.json](models/futsal-rl/config.json) に記録された値）。
+- 試合の記録と動画化：`record_match.py` → `render_replay.py` → `compose_video.py plan_final.json out.mp4`（各ファイル先頭の usage を参照）。
 
 ## 出典・クレジット
 

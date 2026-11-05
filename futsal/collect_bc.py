@@ -4,8 +4,9 @@ Teacher = rule-based tactics conditioned on a tactic vector produced by the coac
 During collection a fraction of robots execute noisy teacher commands (DART-style) so the dataset also covers
 recovery situations; the label is always the clean teacher command.
 
-usage: python collect_bc.py --ckpt logs/go2-soccer/model_1399.pt --n 256 --seconds 240 --out data/bc.pt
-       (then trains the BC policy and writes logs/bc/bc_policy.pt)
+usage (inside futsal/, needs Genesis + a GPU):
+  python collect_bc.py --ckpt ../models/go2-soccer/model_1398.pt --n 256 --seconds 240 [--out-dir logs/bc]
+  (then trains the BC policy and writes <out-dir>/bc_policy.pt and <out-dir>/bc_stats.json)
 """
 import argparse
 import json

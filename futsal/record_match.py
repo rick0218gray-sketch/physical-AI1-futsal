@@ -1,7 +1,9 @@
 """Play one match headless and store the full state per high-level step (for rendering with render_replay.py).
 
-usage: python record_match.py --ckpt logs/go2-soccer/model_1398.pt --blue rl=logs/futsal-rl/policy_600.pt \
-          --red teacher=teacher --coach-blue coach_blue.json --coach-red coach_red.json --seconds 60 --out rec/m1.pt
+usage (inside futsal/, needs Genesis + a GPU):
+  python record_match.py --ckpt ../models/go2-soccer/model_1398.pt --blue rl=../models/futsal-rl/policy_500.pt \
+          --red teacher=teacher --coach-blue coach_blue_demo.json --coach-red coach_red_demo.json --seconds 60 \
+          --out rec/m1.pt
 coach_*.json: list of {"t": seconds, "instruction": ..., "attack": .., "keeper_depth": .., "press": ..}
 """
 import argparse
