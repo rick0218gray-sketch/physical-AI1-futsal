@@ -43,6 +43,7 @@ class ScriptedSim:
     def __init__(self, n, max_hl_steps=3):
         self.n, self.dev, self.max_hl_steps = n, "cpu", max_hl_steps
         self.ball_pos = torch.zeros((n, 3))
+        self.ball_reset = torch.zeros(n, dtype=torch.bool)
         self.hl_step_count = torch.zeros(n, dtype=torch.long)
         self.script = []
         self.resets = []
@@ -95,6 +96,14 @@ def test_reward_terms_and_row_layout(env):
     assert (st["goals_for"], st["goals_against"]) == (1, 1)
     assert (st["gf_vs_teacher"], st["ga_vs_teacher"], st["gf_vs_self"], st["ga_vs_self"]) == (1, 0, 0, 1)
     assert st["falls"] == 2 and st["steps"] == 4
+
+
+def test_ball_teleport_gives_no_progress_reward(env):
+    sim = env.sim
+    sim.script.append((F, F, [[False] * 4] * 4, [3.0, 0.5, -2.0, 0.0]))
+    sim.ball_reset[:] = torch.tensor([True, False, True, False])  # env 0 / 2: dead ball or out -> re-placed
+    _, rew, _, _ = env.step(torch.zeros(8, 3))
+    assert rew.tolist() == pytest.approx([0, 0, 1.0, 1.0, 0, 0, 0, 0])
 
 
 def test_episode_end_resets_and_reports_time_outs(env):
