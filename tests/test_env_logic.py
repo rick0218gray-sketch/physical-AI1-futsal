@@ -150,11 +150,10 @@ def test_shipped_locomotion_policy_loads_on_cpu():
         assert mlp(torch.zeros(4, 45)).shape == (4, 12)
 
 
-@pytest.mark.xfail(strict=True, reason="known issue, deliberately not fixed (would change the reported results): "
-                   "FutsalSim.reset_envs() teleports robots and ball but does not refresh the cached state "
-                   "(pos / ball_pos ...) until the next hl_step, so the first observation / ball-progress reward "
-                   "after an episode reset still uses the previous episode's final state")
-def test_known_issue_reset_envs_refreshes_cached_state():
+def test_reset_envs_refreshes_cached_state():
+    """reset_envs() teleports robots and ball between hl_steps; the cached state (pos / yaw / up / ball_pos ...)
+    must follow immediately, otherwise the first observation and ball-progress reward of the new episode use
+    the previous episode's final state (fixed after submission, see README)."""
     class Body:
         def __init__(self):
             self.qpos = None
@@ -172,6 +171,8 @@ def test_known_issue_reset_envs_refreshes_cached_state():
     s.last_actions = torch.zeros((n, 4, 12))
     s.cmd = torch.zeros((n, 4, 3))
     s.ball_still = torch.zeros(n)
+    s.ball_reset = torch.zeros(n, dtype=torch.bool)
+    s.up = torch.zeros((n, 4))
     s.score = torch.ones((n, 2), dtype=torch.long)
     s.hl_step_count = torch.ones(n, dtype=torch.long)
     s.falls = torch.ones((n, 4), dtype=torch.long)
@@ -182,4 +183,10 @@ def test_known_issue_reset_envs_refreshes_cached_state():
     s.reset_envs(torch.arange(n))
     assert s.score.sum() == 0 and s.hl_step_count.sum() == 0 and s.falls.sum() == 0  # bookkeeping is reset
     assert torch.allclose(s.ball.qpos[:, :2], torch.zeros(n, 2))                      # the ball was re-placed ...
-    assert torch.allclose(s.ball_pos[:, :2], s.ball.qpos[:, :2])                      # fails today: cache not refreshed
+    assert torch.allclose(s.ball_pos[:, :2], s.ball.qpos[:, :2])                      # ... and the cache follows
+    assert torch.all(s.ball_vel == 0) and s.ball_reset.all()
+    for i in range(4):
+        assert torch.allclose(s.pos[:, i], s.robots[i].qpos[:, :3])
+        q = s.robots[i].qpos
+        assert torch.allclose(s.yaw[:, i], 2 * torch.atan2(q[:, 6], q[:, 3]))
+    assert torch.all(s.vel == 0) and torch.all(s.up == 1)

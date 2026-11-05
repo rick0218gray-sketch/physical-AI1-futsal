@@ -126,6 +126,9 @@ class FutsalSim:
         self.score = torch.zeros((n, 2), dtype=torch.long, device=self.dev)
         self.hl_step_count = torch.zeros((n,), dtype=torch.long, device=self.dev)
         self.ball_still = torch.zeros((n,), device=self.dev)
+        # True for envs whose ball was teleported during the last hl_step (goal kick-off, out of
+        # bounds, dead ball) -> the ball-progress reward must ignore that jump
+        self.ball_reset = torch.zeros((n,), dtype=torch.bool, device=self.dev)
         self.falls = torch.zeros((n, 4), dtype=torch.long, device=self.dev)
         self.reset_all()
 
@@ -168,9 +171,17 @@ class FutsalSim:
     def _reset_robot(self, i, idx, jitter):
         if idx.numel() == 0:
             return
-        self.robots[i].set_qpos(self._robot_qpos(i, idx.numel(), jitter), envs_idx=idx, zero_velocity=True)
+        q = self._robot_qpos(i, idx.numel(), jitter)
+        self.robots[i].set_qpos(q, envs_idx=idx, zero_velocity=True)
         self.actions[idx, i] = 0.0
         self.last_actions[idx, i] = 0.0
+        # keep the cached state in sync with the teleport: hl_step() re-reads it at the end of every step,
+        # but reset_envs() between steps did not, so the first observation / ball-progress reward of a new
+        # episode used the previous episode's final state
+        self.pos[idx, i] = q[:, :3]
+        self.yaw[idx, i] = 2.0 * torch.atan2(q[:, 6], q[:, 3])  # quaternion (w, 0, 0, z) -> yaw
+        self.vel[idx, i] = 0.0
+        self.up[idx, i] = 1.0
 
     def _reset_ball(self, idx, spread):
         if idx.numel() == 0:
@@ -182,6 +193,9 @@ class FutsalSim:
         q[:, 3] = 1.0
         self.ball.set_qpos(q, envs_idx=idx, zero_velocity=True)
         self.ball_still[idx] = 0.0
+        self.ball_pos[idx] = q[:, :3]  # see _reset_robot: keep the cache in sync with the teleport
+        self.ball_vel[idx] = 0.0
+        self.ball_reset[idx] = True
 
     def kickoff(self, idx):
         j = 0.5 if self.randomize else 0.0
@@ -248,6 +262,7 @@ class FutsalSim:
     def hl_step(self, cmd_norm):
         """Run one high-level step. Returns per-env event tensors (goals_A, goals_B, falls (n,4), done)."""
         self.set_commands(cmd_norm)
+        self.ball_reset[:] = False
         goal_a = torch.zeros(self.n, dtype=torch.bool, device=self.dev)
         goal_b = torch.zeros_like(goal_a)
         fell = torch.zeros((self.n, 4), dtype=torch.bool, device=self.dev)

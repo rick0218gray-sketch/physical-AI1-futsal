@@ -110,6 +110,14 @@ python futsal/plot_progress.py models/futsal-rl/progress.csv /tmp/rl_progress.pn
 - `pip install torch`（CPU版でよい）を入れると、観測・お手本の左右対称性、学習済み方策の読み込み、強化学習の報酬のテストも動く。Genesis は入っていなければテスト内で差し替える。
 - `plot_progress.py` は `models/futsal-rl/progress.csv` から `results/rl_progress.png` と同じ曲線を描けることを確認済み（日本語フォントは WSL の Windows フォントか Noto CJK を使う）。
 
+### 提出後の修正（2026-11-05）
+
+提出時に「結果が変わるため直さない」としていた既知の問題を3件修正した。`results/` と `models/` は修正前のコードで得たものなので、下の手順で再実行すると数値は一致しない可能性がある。
+
+1. `FutsalSim.reset_envs()` が置き直し後の状態をキャッシュ（`pos` / `ball_pos` など）に反映せず、試合リセット直後の1ステップの観測とボール前進の報酬が前の試合の最後の状態を使っていた。置き直し時にキャッシュも更新するようにした（`_reset_robot` / `_reset_ball`）。
+2. `rl_train.py` のボール前進の報酬が、ボールが8秒止まった／場外に出たときの置き直し（瞬間移動）を含んでいた。`FutsalSim.ball_reset` でその env を除外するようにした（得点時の除外は従来どおり）。
+3. `go2_soccer_loco_train.py` の外乱が env 0 の試行の時計に連動していて、env 0 がリセットされるたびに間隔がずれていた。全体の step 数で数えるようにした。
+
 ### 学習・評価の再現（GPU + Genesis が必要）
 
 作者の環境：WSL2 Ubuntu、RTX 4060 Laptop 8GB、Python 3.11、torch 2.11.0+cu128、genesis-world 1.4.5、rsl-rl-lib 5.5.2。

@@ -46,7 +46,6 @@ class FutsalRLEnv:
         self.opponent = None  # nn.Module snapshot
         self.tactics = sample_tactics(self.tv, self.n, self.device)
         self.opp_teacher = torch.rand(self.n, device=self.device) < teacher_prob
-        self.prev_ball_x = sim.ball_pos[:, 0].clone()
         self.stats = dict(goals_for=0.0, goals_against=0.0, gf_vs_teacher=0.0, ga_vs_teacher=0.0,
                           gf_vs_self=0.0, ga_vs_self=0.0, falls=0.0, steps=0)
         self._obs = None
@@ -73,7 +72,9 @@ class FutsalRLEnv:
         bx0 = self.sim.ball_pos[:, 0].clone()
         ga, gb, fell, done = self.sim.hl_step(cmd)
         progress = (self.sim.ball_pos[:, 0] - bx0)
-        progress = torch.where(ga | gb, torch.zeros_like(progress), progress)  # kick-off teleports the ball
+        # the ball is teleported at kick-off (goal), when it leaves the pitch and when it is dead for 8 s;
+        # none of those jumps is progress the learners caused
+        progress = torch.where(ga | gb | self.sim.ball_reset, torch.zeros_like(progress), progress)
         r = 10.0 * ga.float() - 10.0 * gb.float() + 2.0 * progress - 1.0 * fell[:, :2].float().sum(-1)
         st = self.stats
         st["goals_for"] += ga.sum().item()
