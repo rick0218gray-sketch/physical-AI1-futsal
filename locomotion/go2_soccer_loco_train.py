@@ -33,11 +33,14 @@ class Go2PushEnv(Go2CmdEnv):
     def __init__(self, *args, push_interval_s=3.0, push_max=0.6, **kwargs):
         self.push_every = int(push_interval_s / 0.02)
         self.push_max = push_max
+        # global step counter: with episode_length_buf[0] the cadence shifted every time env 0 was reset
+        self._push_step = 0
         super().__init__(*args, **kwargs)
 
     def step(self, actions):
         out = super().step(actions)
-        if int(self.episode_length_buf[0]) % self.push_every == 0:
+        self._push_step += 1
+        if self._push_step % self.push_every == 0:
             vel = self.robot.get_dofs_velocity([0, 1])
             hit = (torch.rand((self.num_envs, 1), device=gs.device) < 0.5).float()
             kick = (torch.rand((self.num_envs, 2), device=gs.device) * 2 - 1) * self.push_max
